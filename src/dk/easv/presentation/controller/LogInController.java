@@ -27,37 +27,30 @@ public class LogInController implements Initializable {
         model = new AppModel();
     }
 
-    public void logIn(ActionEvent actionEvent) {
+    public void logIn() {
         model.loadUsers();
         model.loginUserFromUsername(userId.getText());
-        if(model.getObsLoggedInUser()!=null){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/App.fxml"));
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Movie Recommendation System 0.01 Beta");
-            stage.show();
-            AppController controller = loader.getController();
+        if(model.getObsLoggedInUser() != null){
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/MainWindow.fxml"));
+                Parent root = loader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setTitle("Movie Recommendation System 0.01 Beta");
+                stage.show();
 
-            controller.setModel(model);
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load App.fxml");
-            alert.showAndWait();
-        }
-
-        }
-        else{
+            } catch (IOException e) {
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load App.fxml");
+                alert.showAndWait();
+            }
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Wrong username or password");
             alert.showAndWait();
         }
     }
 
-    public void signUp(ActionEvent actionEvent) {
+    public void signUp() {
         System.out.println("Sign-Up");
     }
-
 }

@@ -30,9 +30,11 @@
 
     <bottom>
         <HBox alignment="CENTER_RIGHT" styleClass="pageHbox">
-            <Button text="Previous" />
-            <Label text="page 1 / 10"/>
-            <Button text="Next" />
+            <Button onAction="#handlePreviousPageMax" text="&lt;&lt;" />
+            <Button onAction="#handlePreviousPage" text="&lt;" />
+            <Label fx:id="pageLabel" text="page 1 / 10" />
+            <Button onAction="#handleNextPage" text="&gt;" />
+            <Button onAction="#handleNextPageMax" text="&gt;&gt;" />
         </HBox>
     </bottom>
 
