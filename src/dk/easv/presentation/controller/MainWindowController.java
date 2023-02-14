@@ -13,44 +13,44 @@ import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
 
-    IntegerProperty currentpage = new SimpleIntegerProperty(0);
-    IntegerProperty totalPages = new SimpleIntegerProperty(10);
+    private IntegerProperty currentPage = new SimpleIntegerProperty(0);
+    private IntegerProperty totalPages = new SimpleIntegerProperty(10);
 
     @FXML
     public Label pageLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        pageLabel.textProperty().bind(Bindings.concat("page ", currentpage, " / ", totalPages));
+        pageLabel.textProperty().bind(Bindings.concat("page ", currentPage, " / ", totalPages));
 
     }
 
     public void handlePreviousPage() {
-        if(currentpage.get() == 0) return;
-        currentpage.set(currentpage.get() - 1);
+        if(currentPage.get() == 0) return;
+        currentPage.set(currentPage.get() - 1);
     }
 
     public void handlePreviousPageMax() {
-        if(currentpage.get() == 0) return;
-        currentpage.set(0);
+        if(currentPage.get() == 0) return;
+        currentPage.set(0);
     }
 
     public void handleNextPage() {
-        if(currentpage.get() == totalPages.get()) return;
-        currentpage.set(currentpage.get() + 1);
+        if(currentPage.get() == totalPages.get()) return;
+        currentPage.set(currentPage.get() + 1);
     }
 
     public void handleNextPageMax() {
-        if(currentpage.get() == totalPages.get()) return;
-        currentpage.set(totalPages.get());
+        if(currentPage.get() == totalPages.get()) return;
+        currentPage.set(totalPages.get());
     }
 
-    public void handleShowTopMovies(ActionEvent actionEvent) {
+    public void handleShowTopMovies() {
     }
 
-    public void handleShowMostSimilar(ActionEvent actionEvent) {
+    public void handleShowMostSimilar() {
     }
 
-    public void handleShowTopFromSimilar(ActionEvent actionEvent) {
+    public void handleShowTopFromSimilar() {
     }
 }
