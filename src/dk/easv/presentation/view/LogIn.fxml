@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.LogInController">
+<BorderPane styleClass="gradientBackground" stylesheets="@LogIn.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.LogInController">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="256.0" prefWidth="454.0">
          <children>
@@ -22,8 +17,8 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <PasswordField disable="true" fx:id="passwordField" GridPane.rowIndex="1" />
-                  <TextField fx:id="userId" text="Georgi Facello" />
+                  <PasswordField fx:id="passwordField" disable="true" styleClass="inputField" GridPane.rowIndex="1" />
+                  <TextField fx:id="userId" styleClass="inputField" text="Georgi Facello" />
                </children>
             </GridPane>
             <GridPane layoutX="160.0" layoutY="159.0" prefHeight="30.0" prefWidth="133.0">
@@ -35,8 +30,16 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" onAction="#logIn" text="log - in" />
-                  <Button mnemonicParsing="false" onAction="#signUp" text="Sig - Up" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#logIn" stylesheets="@LogIn.css" text="log - in">
+                     <styleClass>
+                        <String fx:value="loginButton" />
+                        <String fx:value="buttonHover" />
+                     </styleClass></Button>
+                  <Button mnemonicParsing="false" onAction="#signUp" text="Sig - Up" GridPane.columnIndex="1">
+                     <styleClass>
+                        <String fx:value="signUpButton" />
+                        <String fx:value="buttonHover" />
+                     </styleClass></Button>
                </children>
             </GridPane>
          </children>

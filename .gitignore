@@ -62,6 +62,7 @@
 
       # IntelliJ
       out/
+      /out/*.fxml
 
       # mpeltonen/sbt-idea plugin
       .idea_modules/

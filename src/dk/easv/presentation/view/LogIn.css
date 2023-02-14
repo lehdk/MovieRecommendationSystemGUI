@@ -1,0 +1,27 @@
+.loginButton {
+    -fx-background-color: #486268;
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+}
+
+.signUpButton {
+    -fx-background-color: #A36268;
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+}
+
+.buttonHover:hover {
+    -fx-scale-x: 1.08;
+    -fx-scale-y: 1.08;
+    -fx-scale-z: 1.08;
+}
+
+.gradientBackground {
+    -fx-background-size: 100%;
+    -fx-background-color: linear-gradient(to bottom right, #4d4d4d, #999999);
+}
+
+.inputField {
+    -fx-text-fill: black;
+    -fx-background-color: rgba(190, 190, 190, 200);
+}
