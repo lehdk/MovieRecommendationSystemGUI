@@ -1,0 +1,26 @@
+.gradientBackground {
+    -fx-background-size: 100%;
+    -fx-background-color: linear-gradient(to bottom right, #4d4d4d, #999999);
+}
+
+.navbar {
+    -fx-background-color: #212121;
+    -fx-padding: 10;
+}
+
+.navbar Button {
+    -fx-background-color: linear-gradient(to bottom, #ffffff, #e6e6e6);
+    -fx-background-radius: 15;
+    -fx-padding: 10 20;
+    -fx-text-fill: #000000;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+    -fx-pref-width: -1;
+    -fx-max-width: -1;
+}
+
+.navbar Button:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-scale-z: 1.05;
+}
