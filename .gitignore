@@ -62,7 +62,6 @@
 
       # IntelliJ
       out/
-      /out/*.fxml
 
       # mpeltonen/sbt-idea plugin
       .idea_modules/
@@ -123,3 +122,5 @@
       .idea/**/azureSettings.xml
 
       # End of https://www.toptal.com/developers/gitignore/api/intellij
+
+/out/
