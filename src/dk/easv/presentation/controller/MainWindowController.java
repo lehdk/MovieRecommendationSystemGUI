@@ -3,6 +3,7 @@ package dk.easv.presentation.controller;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -44,4 +45,12 @@ public class MainWindowController implements Initializable {
         currentpage.set(totalPages.get());
     }
 
+    public void handleShowTopMovies(ActionEvent actionEvent) {
+    }
+
+    public void handleShowMostSimilar(ActionEvent actionEvent) {
+    }
+
+    public void handleShowTopFromSimilar(ActionEvent actionEvent) {
+    }
 }
