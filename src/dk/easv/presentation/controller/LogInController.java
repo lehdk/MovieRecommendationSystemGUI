@@ -28,6 +28,7 @@ public class LogInController implements Initializable {
     }
 
     public void logIn() {
+        this.passwordField.getScene().getWindow().hide();
         model.loadUsers();
         model.loginUserFromUsername(userId.getText());
         if(model.getObsLoggedInUser() != null){

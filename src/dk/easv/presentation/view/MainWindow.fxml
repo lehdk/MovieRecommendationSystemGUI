@@ -5,19 +5,12 @@
 
 <BorderPane prefHeight="720.0" prefWidth="1280.0" styleClass="gradientBackground" stylesheets="@MainWindow.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.MainWindowController">
     <top>
-        <GridPane alignment="CENTER_LEFT" hgap="10" prefHeight="46.0" prefWidth="1280.0" styleClass="navbar">
+        <HBox fx:id="navbar" alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="1280.0">
             <Button fx:id="topMovieSeen" onAction="#handleShowTopMovieSeen" prefWidth="84.0" text="Top movies" GridPane.columnIndex="0" GridPane.rowIndex="0" />
             <Button fx:id="topMovieNotSeen" onAction="#handleShowTopMovieNotSeen" text="Top most similar users" GridPane.columnIndex="1" GridPane.rowIndex="0" />
             <Button fx:id="topMoviesSimilarUsers" onAction="#handleShowTopMoviesSimilarUsers" text="Top from similar users" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-         <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints />
-         </rowConstraints>
-        </GridPane>
+            <TextField fx:id="searchTxtField" promptText="Search..."/>
+        </HBox>
     </top>
 
     <center>

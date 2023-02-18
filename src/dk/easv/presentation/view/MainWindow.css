@@ -3,15 +3,16 @@
     -fx-background-color: linear-gradient(to bottom right, #4d4d4d, #999999);
 }
 
-.navbar {
+#navbar {
     -fx-background-color: #212121;
     -fx-padding: 10;
 }
 
-.navbar Button {
+#navbar > * {
     -fx-background-color: linear-gradient(to bottom, #ffffff, #e6e6e6);
     -fx-background-radius: 15;
-    -fx-padding: 10 20;
+    -fx-spacing: 10px;
+    -fx-padding: 10px 20px;
     -fx-text-fill: #000000;
     -fx-font-size: 12;
     -fx-font-weight: bold;
@@ -19,7 +20,7 @@
     -fx-max-width: -1;
 }
 
-.navbar Button:hover {
+#navbar Button:hover {
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
     -fx-scale-z: 1.05;
@@ -52,4 +53,12 @@
     -fx-background-color: transparent;
     -fx-padding: 10px;
     -fx-margin: 10px;
+}
+
+#movieGridPane > ColumnConstraints {
+    -fx-pref-width: 25%;
+}
+
+VBox {
+    -fx-pref-width: 200px;
 }

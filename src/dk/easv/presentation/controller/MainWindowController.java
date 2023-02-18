@@ -9,9 +9,15 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.nio.file.Path;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
@@ -106,8 +112,31 @@ public class MainWindowController implements Initializable {
 
             var movie = currentView.get(i);
 
-            Label label = new Label(movie.getTitle());
-            movieGridPane.add(label, col, row);
+            BorderPane bp = new BorderPane();
+            bp.getStyleClass().add("moviePane");
+
+            // Add image
+            Image img = new Image("file:data/ComingToAmerica.jpg");
+            ImageView imgView = new ImageView(img);
+
+            imgView.setFitWidth(img.getWidth() / 3);
+            imgView.setFitHeight(img.getHeight() / 3);
+            bp.setCenter(imgView);
+
+            // Add text
+            DecimalFormat df = new DecimalFormat("#.#");
+
+            VBox vbox = new VBox();
+
+            var title = new Label(movie.getTitle());
+            title.setWrapText(true);
+
+            vbox.getChildren().add(title);
+            vbox.getChildren().add(new Label(movie.getYear() + ""));
+            vbox.getChildren().add(new Label(df.format(movie.getAverageRating())));
+            bp.setRight(vbox);
+
+            movieGridPane.add(bp, col, row);
         }
     }
 }
