@@ -1,8 +1,10 @@
 package dk.easv.presentation.controller;
 
 import dk.easv.entities.Movie;
+import dk.easv.entities.TopMovie;
 import dk.easv.presentation.model.AppModel;
 import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -82,8 +84,17 @@ public class MainWindowController implements Initializable {
         refreshView();
     }
 
-    public void handleShowTopMoviesSimilarUsers() {
-        System.out.println("Not implemented yet!");
+    public void handleShowTopMoviesSimilarUsers() { // TODO: This should probably be changed
+        ObservableList<Movie> movies = FXCollections.observableArrayList();
+
+        for(TopMovie tm : model.getObsTopMoviesSimilarUsers()) {
+            movies.add(tm.getMovie());
+        }
+
+        currentView = movies;
+        model.calculateAndSetTotalPagesProperty(currentView.size(),  CELLS_IN_GRID);
+
+        refreshView();
     }
 
     private void refreshView() {
