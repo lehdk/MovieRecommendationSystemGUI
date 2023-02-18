@@ -43,3 +43,13 @@
 
     -fx-cursor: hand;
 }
+
+#movieGridPane {
+    -fx-background-color: transparent;
+}
+
+#movieGridPane > * {
+    -fx-background-color: transparent;
+    -fx-padding: 10px;
+    -fx-margin: 10px;
+}

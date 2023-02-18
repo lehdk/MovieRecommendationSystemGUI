@@ -1,56 +1,102 @@
 package dk.easv.presentation.controller;
 
+import dk.easv.entities.Movie;
+import dk.easv.presentation.model.AppModel;
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.event.ActionEvent;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
 
-    private IntegerProperty currentPage = new SimpleIntegerProperty(0);
-    private IntegerProperty totalPages = new SimpleIntegerProperty(10);
+    private ObservableList<Movie> currentView = null;
+
+    private static final int ROWS_IN_GRID = 4;
+    private static final int COLUMNS_IN_GRID = 4;
+    private static final int CELLS_IN_GRID = ROWS_IN_GRID * COLUMNS_IN_GRID;
+
+    private AppModel model;
 
     @FXML
     public Label pageLabel;
 
+    @FXML
+    public GridPane movieGridPane;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        pageLabel.textProperty().bind(Bindings.concat("page ", currentPage, " / ", totalPages));
+    }
 
+    public void setModel(AppModel model) {
+        this.model = model;
+
+        pageLabel.textProperty().bind(Bindings.concat("page ", model.currentPageProperty(), " / ", model.totalPagesProperty()));
+
+        model.loadUsers();
+        model.loadData(model.getObsLoggedInUser());
+
+        handleShowTopMovieSeen();
     }
 
     public void handlePreviousPage() {
-        if(currentPage.get() == 0) return;
-        currentPage.set(currentPage.get() - 1);
+        if(model.getCurrentPage() == 0) return;
+        model.currentPageProperty().set(model.getCurrentPage() - 1);
+        refreshView();
     }
 
     public void handlePreviousPageMax() {
-        if(currentPage.get() == 0) return;
-        currentPage.set(0);
+        if(model.getCurrentPage() == 0) return;
+        model.currentPageProperty().set(0);
+        refreshView();
     }
 
     public void handleNextPage() {
-        if(currentPage.get() == totalPages.get()) return;
-        currentPage.set(currentPage.get() + 1);
+        if(model.getCurrentPage() == model.getTotalPages()) return;
+        model.currentPageProperty().set(model.getCurrentPage() + 1);
+        refreshView();
     }
 
     public void handleNextPageMax() {
-        if(currentPage.get() == totalPages.get()) return;
-        currentPage.set(totalPages.get());
+        if(model.getCurrentPage() == model.getTotalPages()) return;
+        model.currentPageProperty().set(model.getTotalPages());
+        refreshView();
     }
 
-    public void handleShowTopMovies() {
+
+    public void handleShowTopMovieSeen() {
+        currentView = model.getObsTopMovieSeen();
+        model.calculateAndSetTotalPagesProperty(currentView.size(), CELLS_IN_GRID);
+
+        refreshView();
     }
 
-    public void handleShowMostSimilar() {
+    public void handleShowTopMovieNotSeen() {
+        currentView = model.getObsTopMovieNotSeen();
+        model.calculateAndSetTotalPagesProperty(currentView.size(),  CELLS_IN_GRID);
+
+        refreshView();
     }
 
-    public void handleShowTopFromSimilar() {
+    public void handleShowTopMoviesSimilarUsers() {
+        System.out.println("Not implemented yet!");
+    }
+
+    private void refreshView() {
+        movieGridPane.getChildren().clear();
+        int startIndex = (model.getCurrentPage()) * CELLS_IN_GRID;
+        for(int i = startIndex; (i < currentView.size() && i < startIndex + CELLS_IN_GRID); i++) {
+            int col = ((i - startIndex) % ROWS_IN_GRID);
+            int row = ((i - startIndex) / ROWS_IN_GRID);
+
+            var movie = currentView.get(i);
+
+            Label label = new Label(movie.getTitle());
+            movieGridPane.add(label, col, row);
+        }
     }
 }

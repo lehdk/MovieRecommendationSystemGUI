@@ -2,7 +2,9 @@ package dk.easv.presentation.model;
 
 import dk.easv.entities.*;
 import dk.easv.logic.LogicManager;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +20,9 @@ public class AppModel {
     private final ObservableList<TopMovie> obsTopMoviesSimilarUsers = FXCollections.observableArrayList();
 
     private final SimpleObjectProperty<User> obsLoggedInUser = new SimpleObjectProperty<>();
+
+    private IntegerProperty currentPage = new SimpleIntegerProperty(0);
+    private IntegerProperty totalPages = new SimpleIntegerProperty(0);
 
     public void loadUsers(){
         obsUsers.clear();
@@ -68,6 +73,28 @@ public class AppModel {
 
     public void setObsLoggedInUser(User obsLoggedInUser) {
         this.obsLoggedInUser.set(obsLoggedInUser);
+    }
+
+    public int getCurrentPage() {
+        return currentPage.get();
+    }
+
+    public IntegerProperty currentPageProperty() {
+        return currentPage;
+    }
+
+    public int getTotalPages() {
+        return totalPages.get();
+    }
+
+    public IntegerProperty totalPagesProperty() {
+        return totalPages;
+    }
+
+    public void calculateAndSetTotalPagesProperty(int movieCount, int cellsInGrid) {
+        int result = Math.ceilDiv(movieCount, cellsInGrid) - 1; // Minus one because we zero index the pages.
+        totalPages.set(result);
+        this.currentPage.set(0);
     }
 
     public boolean loginUserFromUsername(String userName) {

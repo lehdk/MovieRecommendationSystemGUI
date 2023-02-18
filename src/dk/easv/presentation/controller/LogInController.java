@@ -39,6 +39,9 @@ public class LogInController implements Initializable {
                 stage.setTitle("Movie Recommendation System 0.01 Beta");
                 stage.show();
 
+                MainWindowController controller = loader.getController();
+                controller.setModel(model);
+
             } catch (IOException e) {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load App.fxml");
