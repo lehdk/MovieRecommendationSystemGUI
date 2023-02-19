@@ -8,7 +8,7 @@
     -fx-padding: 10;
 }
 
-#navbar > * {
+#navbar > Button, TextField {
     -fx-background-color: linear-gradient(to bottom, #ffffff, #e6e6e6);
     -fx-background-radius: 15;
     -fx-spacing: 10px;

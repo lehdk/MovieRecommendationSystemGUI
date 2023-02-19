@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <BorderPane prefHeight="720.0" prefWidth="1280.0" styleClass="gradientBackground" stylesheets="@MainWindow.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.MainWindowController">
     <top>
         <HBox fx:id="navbar" alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="1280.0">
-            <Button fx:id="topMovieSeen" onAction="#handleShowTopMovieSeen" prefWidth="84.0" text="Top movies seen" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <Button fx:id="topMovieNotSeen" onAction="#handleShowTopMovieNotSeen" text="Top movies not seen" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-            <Button fx:id="topMoviesSimilarUsers" onAction="#handleShowTopMoviesSimilarUsers" text="Top movies from similar users" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-            <TextField fx:id="searchTxtField" promptText="Search..."/>
+            <Button fx:id="topMovieSeen" minWidth="-Infinity" onAction="#handleShowTopMovieSeen" prefWidth="215.0" text="Top movies seen" GridPane.columnIndex="0" GridPane.rowIndex="0" HBox.hgrow="NEVER">
+            <HBox.margin>
+               <Insets right="10.0" />
+            </HBox.margin></Button>
+            <Button fx:id="topMovieNotSeen" minWidth="-Infinity" onAction="#handleShowTopMovieNotSeen" prefWidth="215.0" text="Top movies not seen" GridPane.columnIndex="1" GridPane.rowIndex="0" HBox.hgrow="NEVER">
+            <HBox.margin>
+               <Insets right="10.0" />
+            </HBox.margin></Button>
+            <Button fx:id="topMoviesSimilarUsers" minWidth="-Infinity" onAction="#handleShowTopMoviesSimilarUsers" prefWidth="215.0" text="Top movies from similar users" GridPane.columnIndex="2" GridPane.rowIndex="0" HBox.hgrow="NEVER">
+            <HBox.margin>
+               <Insets right="10.0" />
+            </HBox.margin></Button>
+            <Region maxWidth="1.7976931348623157E308" prefWidth="10000.0" styleClass="invisible" />
+            <TextField fx:id="searchTxtField" maxWidth="300.0" minWidth="300.0" prefWidth="300.0" promptText="Search..." HBox.hgrow="ALWAYS">
+            <HBox.margin>
+               <Insets />
+            </HBox.margin></TextField>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
         </HBox>
     </top>
 
@@ -22,10 +39,10 @@
                 <ColumnConstraints hgrow="SOMETIMES" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints vgrow="SOMETIMES"/>
-                <RowConstraints vgrow="SOMETIMES"/>
-                <RowConstraints vgrow="SOMETIMES"/>
-                <RowConstraints vgrow="SOMETIMES"/>
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
             </rowConstraints>
         </GridPane>
     </center>
