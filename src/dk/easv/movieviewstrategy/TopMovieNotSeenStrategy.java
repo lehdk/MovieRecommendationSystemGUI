@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.text.DecimalFormat;
@@ -35,8 +36,8 @@ public class TopMovieNotSeenStrategy implements  MovieViewStrategy {
 
             var movie = movies.get(i);
 
-            BorderPane bp = new BorderPane();
-            bp.getStyleClass().add("moviePane");
+            var hbox = new HBox();
+            hbox.getStyleClass().add("moviePane");
 
             // Add image
             Image img = new Image("file:data/ComingToAmerica.jpg");
@@ -44,7 +45,7 @@ public class TopMovieNotSeenStrategy implements  MovieViewStrategy {
 
             imgView.setFitWidth(img.getWidth() / 3);
             imgView.setFitHeight(img.getHeight() / 3);
-            bp.setCenter(imgView);
+            hbox.getChildren().add(imgView);
 
             // Add text
             DecimalFormat df = new DecimalFormat("#.#");
@@ -57,9 +58,9 @@ public class TopMovieNotSeenStrategy implements  MovieViewStrategy {
             vbox.getChildren().add(title);
             vbox.getChildren().add(new Label(movie.getYear() + ""));
             vbox.getChildren().add(new Label(df.format(movie.getAverageRating())));
-            bp.setRight(vbox);
+            hbox.getChildren().add(vbox);
 
-            pane.add(bp, colRow.getKey(), colRow.getValue());
+            pane.add(hbox, colRow.getKey(), colRow.getValue());
         }
     }
 }
