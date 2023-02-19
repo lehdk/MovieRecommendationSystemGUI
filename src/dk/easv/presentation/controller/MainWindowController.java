@@ -5,11 +5,14 @@ import dk.easv.movieviewstrategy.MovieViewStrategy;
 import dk.easv.movieviewstrategy.TopMovieNotSeenStrategy;
 import dk.easv.movieviewstrategy.TopMovieSeenStrategy;
 import dk.easv.movieviewstrategy.TopMoviesSimilarUsersStrategy;
+import javafx.animation.PauseTransition;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,8 +33,18 @@ public class MainWindowController implements Initializable {
     @FXML
     public GridPane movieGridPane;
 
+    @FXML
+    public TextField searchTxtField;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        PauseTransition searchDelay = new PauseTransition(Duration.millis(250));
+
+        searchTxtField.textProperty().addListener((observableValue, oldValue, newValue) -> {
+            searchDelay.setOnFinished(event -> System.out.println("Searching: " + newValue));
+
+            searchDelay.playFromStart();
+        });
     }
 
     public void setModel(AppModel model) {
