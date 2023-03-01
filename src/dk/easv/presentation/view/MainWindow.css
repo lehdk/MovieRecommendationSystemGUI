@@ -62,3 +62,8 @@
 VBox {
     -fx-pref-width: 200px;
 }
+
+.moviePane {
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+}
